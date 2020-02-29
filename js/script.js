@@ -69,12 +69,45 @@ project 1 - A Random Quote Generator
  * `getRandomQuote` function
 ***/
 
+function getRandomQuote() {
+  let quoteMessage;
+  let randomNumber = Math.floor(Math.random() * quotes.length);
+
+  for(let i = 0; i < quotes.length; i++) {
+    quoteMessage = quotes[randomNumber]; 
+  }
+  return quoteMessage;
+}
 
 
 /***
  * `printQuote` function
 ***/
 
+function printQuote() {
+  let randomQuote = getRandomQuote();
+  let html = '<p class="quote">' + randomQuote.quote + '</p>';
+            
+  html+= '<p class="source">' + randomQuote.source;
+
+  if(randomQuote.citation) {
+    html += '<span class="citation">' + randomQuote.citation + '</span>';
+  }
+
+  if(randomQuote.year) {
+    html += '<span class="year">' + randomQuote.year + '</span>';
+  }
+
+  html +='</p>';
+
+  let outputDiv = document.getElementById('quote-box');
+  outputDiv.innerHTML = html;
+
+  console.log(randomQuote);
+  console.log(randomQuote.source);
+  console.log(html);
+
+}
 
 
 /***
