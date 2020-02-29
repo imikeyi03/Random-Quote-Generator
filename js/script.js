@@ -15,11 +15,13 @@ project 1 - A Random Quote Generator
     {
       "quote" : "You are braver than you believe, stronger than you seem and smarter than you think.",
       "source" : "Disney",
-      "citation" : "Winnie the Pooh"
+      "citation" : "Winnie the Pooh",
+      "tags" : "Motivation"
     },
     {
       "quote" : "You are confined only by the walls you build yourself.",
-      "source" : "Andrew Murphy"
+      "source" : "Andrew Murphy",
+      "tags" : "Motivation"
     },
     {
       "quote" : "It's the possibility of having a dream come true that makes life interesting.",
@@ -65,9 +67,7 @@ project 1 - A Random Quote Generator
 ];
 
 
-/***
- * `getRandomQuote` function
-***/
+// Function grabs a randomly selected quote object from the quotes array
 
 function getRandomQuote() {
   let quoteMessage;
@@ -80,11 +80,9 @@ function getRandomQuote() {
 }
 
 
-/***
- * `printQuote` function
-***/
+// Function that, every 8 seconds, displays a new quote
 
-function printQuote() {
+setInterval( function printQuote() {
   let randomQuote = getRandomQuote();
   let html = '<p class="quote">' + randomQuote.quote + '</p>';
             
@@ -98,21 +96,50 @@ function printQuote() {
     html += '<span class="year">' + randomQuote.year + '</span>';
   }
 
+  if(randomQuote.tags) {
+    html += '<span class="tags">' + randomQuote.tags + '</span>';
+  }
+
   html +='</p>';
+
+  // Select div and output message
 
   let outputDiv = document.getElementById('quote-box');
   outputDiv.innerHTML = html;
 
-  console.log(randomQuote);
-  console.log(randomQuote.source);
-  console.log(html);
+
+  // Call getRandomColor and change BG color
+
+  document.getElementById('js-body').style.backgroundColor = getRandomColor();
+
+}, 8000);
+
+
+
+// Generates a random RGB value
+
+function getRandomColor() {
+  let color;
+
+  red = Math.floor(Math.random() * 256);
+  green = Math.floor(Math.random() * 256);
+  blue = Math.floor(Math.random() * 256);
+
+  color = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+
+  return color;
 
 }
 
+
+
+
+
+// Disabled button click event for timed interval changes
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+// document.getElementById('load-quote').addEventListener("click", printQuote, false);
