@@ -77,12 +77,12 @@ function getRandomQuote() {
     quoteMessage = quotes[randomNumber]; 
   }
   return quoteMessage;
-}
+};
 
 
 // Function that, every 8 seconds, displays a new quote
 
-setInterval( function printQuote() {
+function printQuote() {
   let randomQuote = getRandomQuote();
   let html = '<p class="quote">' + randomQuote.quote + '</p>';
             
@@ -112,7 +112,7 @@ setInterval( function printQuote() {
 
   document.getElementById('js-body').style.backgroundColor = getRandomColor();
 
-}, 8000);
+};
 
 
 
@@ -126,20 +126,38 @@ function getRandomColor() {
   blue = Math.floor(Math.random() * 256);
 
   color = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
-
   return color;
 
 }
 
+// Timer variable holds interval time
+
+let timer;
 
 
+// Starts a 5 second timer to shuffle through quotes and changes play button when clicked
+
+function startTimer() {
+  timer = setInterval(function() {
+    printQuote();
+  },5000);
+  document.getElementById("js-play").style.color = "#ff0000";
+}
+
+// Stops 5 second timer and changes play button back to white
+
+function endTimer() {
+  clearInterval(timer);
+  document.getElementById("js-play").style.color = "#FFF";
+}
 
 
-// Disabled button click event for timed interval changes
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-// document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('js-play').addEventListener("click", startTimer, false);
+document.getElementById('js-pause').addEventListener("click", endTimer, false);

@@ -6,13 +6,13 @@
     <title>Random Quotes</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
-  </head>
+    <link rel="stylesheet" href="/css/fontawesome-free-5.12.1-web/css/all.css">
+</head>
 
   <body id="js-body">
     <header>
       <h1>Random Quotes</h1>
-      <!-- Removed button as it no longer serves a purpose -->
-      <!-- <button id="load-quote" class="load-quote">Show another quote</button> -->
+      <button id="load-quote" class="load-quote">Show another quote</button>
     </header>
 
     <div class="container">
@@ -20,8 +20,10 @@
         <p class="quote">Every great developer you know got there by solving problems they were unqualified to solve until they actually did it.</p>
         <p class="source">Patrick McKenzie<span class="citation">Twitter</span><span class="year">2016</span></p>
       </div>
+      <!-- Uses font awesome play and stop icons for play/pause functionality -->
+      <i class="far fa-play-circle" id="js-play"></i>
+      <i class="far fa-pause-circle" id="js-pause"></i>
     </div>
-    
     <script src="js/script.js"></script>
   </body>
 </html>
