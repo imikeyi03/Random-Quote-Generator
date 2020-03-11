@@ -8,4 +8,4 @@ Created an app that randomly displays famous quotes with sources, optional citat
 - HTML5
 - CSS3
 - Vanilla JS
-- font Awesome Icons
+- Font Awesome Icons
